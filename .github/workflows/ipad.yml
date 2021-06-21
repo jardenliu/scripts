@@ -2,35 +2,35 @@
 
 name: iPad
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
-  push:
-    branches: [ main ]
-  schedule:
-    - cron: '*/5 * * * *'
+    push:
+        branches: [main]
+    schedule:
+        - cron: '*/6 * * * *'
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    # This workflow contains a single job called "build"
+    build:
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.5
-        
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v2.1.5
 
-      # Runs a single command using the runners shell
-      - name: install deps
-        run: npm install
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v2
 
-      # Runs a set of commands using the runners shell
-      - name: run scripts
-        run: node ./ipadpro/index.js -k ${{ secrets.MAIL_TOKEN }}
+            # Runs a single command using the runners shell
+            - name: install deps
+              run: npm install
+
+            # Runs a set of commands using the runners shell
+            - name: run scripts
+              run: node ./ipadpro/index.js -k ${{ secrets.MAIL_TOKEN }}
