@@ -24,7 +24,7 @@ const resolveHtml = async (html) => {
         $('div.refurbished-category-grid-no-js li h3 a').each(function () {
             const text = $(this).text()
             console.log('节点获取正常', text)
-            if (~text.indexOf('12.9') && ~text.indexOf('第四代')) {
+            if (~text.indexOf('12.9') && text.match(/第四代|第五代/)) {
                 resolve(true)
             }
         })
